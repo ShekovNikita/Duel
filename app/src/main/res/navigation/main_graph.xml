@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/navigation_games">
+
+    <fragment
+        android:id="@+id/navigation_games"
+        android:name="com.sheniv.duel.fragments.MainFragment"
+        android:label="navigation_games"
+        tools:layout="@layout/fragment_main" />
+    <fragment
+        android:id="@+id/navigation_players"
+        android:name="com.sheniv.duel.fragments.PlayersFragment"
+        android:label="navigation_add_player" >
+        <action
+            android:id="@+id/action_navigation_players_to_playerInfoFragment"
+            app:destination="@id/playerInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_rating"
+        android:name="com.sheniv.duel.fragments.RatingFragment"
+        android:label="navigation_rating" />
+    <fragment
+        android:id="@+id/stopWatchGameFragment"
+        android:name="com.sheniv.duel.games.stopwatch.StopWatchGameFragment"
+        android:label="fragment_stop_watch_game"
+        tools:layout="@layout/fragment_stop_watch_game" />
+    <fragment
+        android:id="@+id/duelGameFragment"
+        android:name="com.sheniv.duel.games.duel.DuelGameFragment"
+        android:label="fragment_duel_game"
+        tools:layout="@layout/fragment_duel_game" />
+    <fragment
+        android:id="@+id/timerGameFragment"
+        android:name="com.sheniv.duel.games.timer.TimerGameFragment"
+        android:label="fragment_timer_game"
+        tools:layout="@layout/fragment_timer_game" />
+    <fragment
+        android:id="@+id/selectPlayersFragment"
+        android:name="com.sheniv.duel.games.SelectPlayersFragment"
+        android:label="fragment_select_players"
+        tools:layout="@layout/fragment_select_players" />
+    <fragment
+        android:id="@+id/navigation_help"
+        android:name="com.sheniv.duel.fragments.HelpFragment"
+        android:label="fragment_help"
+        tools:layout="@layout/fragment_help" />
+    <fragment
+        android:id="@+id/playerInfoFragment"
+        android:name="com.sheniv.duel.fragments.PlayerInfoFragment"
+        android:label="fragment_player_info"
+        tools:layout="@layout/fragment_player_info" />
+</navigation>

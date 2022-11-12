@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="top_text_size">30sp</dimen>
+    <dimen name="padding_top_text">8dp</dimen>
+    <dimen name="timer_player_name_text_size">44dp</dimen>
+    <dimen name="margin_top_player_name_info">24dp</dimen>
+</resources>

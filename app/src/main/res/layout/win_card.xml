@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/Widget.Material3.CardView.Elevated"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!--<androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/image_salut"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop" />-->
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.Material3.CardView.Elevated"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/btn_repeat"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_margin="12dp"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/materialTextView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:text="@string/winner"
+                    android:textSize="56sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    app:layout_constraintStart_toStartOf="@+id/materialTextView2"
+                    app:layout_constraintEnd_toEndOf="@+id/materialTextView2"
+                    app:layout_constraintTop_toBottomOf="@+id/materialTextView2" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/winner_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/training"
+                    android:textSize="56sp"
+                    app:layout_constraintEnd_toEndOf="@+id/materialTextView2"
+                    app:layout_constraintStart_toStartOf="@+id/materialTextView2"
+                    app:layout_constraintTop_toBottomOf="@+id/materialTextView2" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/materialTextView3"
+                    style="@style/TextAppearance.Material3.HeadlineSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/result"
+                    app:layout_constraintEnd_toEndOf="@+id/materialTextView2"
+                    app:layout_constraintStart_toStartOf="@+id/materialTextView2"
+                    app:layout_constraintTop_toBottomOf="@+id/winner_name" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/result"
+                    style="@style/TextAppearance.Material3.HeadlineSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="323"
+                    app:layout_constraintEnd_toEndOf="@+id/materialTextView2"
+                    app:layout_constraintStart_toStartOf="@+id/materialTextView2"
+                    app:layout_constraintTop_toBottomOf="@+id/materialTextView3" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_games"
+            style="@style/bottom_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/games"
+            android:textSize="36sp"
+            app:cornerRadius="12dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_repeat"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_players"
+            style="@style/bottom_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/players"
+            android:textSize="36sp"
+            app:cornerRadius="12dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_repeat"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline2" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_repeat"
+            style="@style/bottom_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="12sp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/repeat"
+            android:textSize="36sp"
+            app:cornerRadius="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
