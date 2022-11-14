@@ -19,6 +19,7 @@ class GameAdapter(
         fun bind(game: Game) = with(binding) {
             iconGame.setImageResource(game.icon)
             nameOfTheGame.setText(game.name)
+            btnInfo.setOnClickListener { clickOnTheGame.gameInfo(game) }
         }
     }
 

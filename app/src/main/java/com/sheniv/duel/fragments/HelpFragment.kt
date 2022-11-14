@@ -16,9 +16,8 @@ import com.google.android.gms.ads.rewarded.RewardedAd
 import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
 import com.sheniv.duel.base.BaseFragment
 import com.sheniv.duel.databinding.FragmentHelpBinding
+import com.sheniv.duel.extantion.AD_UNIT_ID
 import com.sheniv.duel.extantion.showToast
-
-const val AD_UNIT_ID = "ca-app-pub-3940256099942544/5224354917"
 
 class HelpFragment : BaseFragment<FragmentHelpBinding>() {
 

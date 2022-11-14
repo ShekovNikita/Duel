@@ -33,4 +33,8 @@ class RatingFragment : BaseFragment<FragmentRatingBinding>(), ClickOnTheGame {
         binding.recyclerPlayersRating.adapter = PlayerRatingAdapter(game.name, db.getAll())
     }
 
+    override fun gameInfo(game: Game) {
+        
+    }
+
 }
