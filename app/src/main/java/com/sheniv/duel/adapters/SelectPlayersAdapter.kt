@@ -19,7 +19,6 @@ class SelectPlayersAdapter(
         fun bind(player: Player) = with(binding) {
             playerName.text = player.name
             checkboxSelectPlayer.setOnCheckedChangeListener { compoundButton, isChecked ->
-
                 if (isChecked) selectedPlayers.add(player)
                 else selectedPlayers.remove(player)
                 Log.e("players", "$selectedPlayers")

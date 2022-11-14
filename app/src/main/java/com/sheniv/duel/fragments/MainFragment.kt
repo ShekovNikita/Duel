@@ -11,10 +11,7 @@ import com.sheniv.duel.adapters.GameAdapter
 import com.sheniv.duel.base.BaseFragment
 import com.sheniv.duel.database.room.PlayerDatabase
 import com.sheniv.duel.databinding.FragmentMainBinding
-import com.sheniv.duel.extantion.allGames
-import com.sheniv.duel.extantion.beVisible
-import com.sheniv.duel.extantion.bottomNavigationView
-import com.sheniv.duel.extantion.selectedGame
+import com.sheniv.duel.extantion.*
 import com.sheniv.duel.models.Game
 
 class MainFragment : BaseFragment<FragmentMainBinding>(), ClickOnTheGame {
@@ -35,7 +32,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>(), ClickOnTheGame {
 
     override fun selectTheGame(game: Game) {
         selectedGame = game
-        navController.navigate(R.id.selectPlayersFragment)
+        if (game.name != R.string.soon) navController.navigate(R.id.selectPlayersFragment)
     }
 
 }

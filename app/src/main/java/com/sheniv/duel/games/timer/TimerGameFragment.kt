@@ -2,16 +2,14 @@ package com.sheniv.duel.games.timer
 
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.sheniv.duel.R
 import com.sheniv.duel.base.BaseFragmentGame
 import com.sheniv.duel.database.room.Player
 import com.sheniv.duel.databinding.FragmentTimerGameBinding
-import com.sheniv.duel.extantion.beGone
-import com.sheniv.duel.extantion.beVisible
-import com.sheniv.duel.extantion.db
-import com.sheniv.duel.extantion.selectedPlayers
+import com.sheniv.duel.extantion.*
 
 class TimerGameFragment : BaseFragmentGame<FragmentTimerGameBinding>() {
 
@@ -19,6 +17,8 @@ class TimerGameFragment : BaseFragmentGame<FragmentTimerGameBinding>() {
     var player = 0
     var counter = 0
     val allPlayerInThisGame = arrayListOf<Player>()
+    val repeatPlayers = arrayListOf<Player>()
+    val multiplyWinners = arrayListOf<Player>()
 
     override fun createViewBinding(
         inflater: LayoutInflater,
@@ -26,6 +26,8 @@ class TimerGameFragment : BaseFragmentGame<FragmentTimerGameBinding>() {
     ) = FragmentTimerGameBinding.inflate(inflater, container, false)
 
     override fun FragmentTimerGameBinding.onBindView(savedInstanceState: Bundle?) {
+
+        repeatPlayers.addAll(selectedPlayers)
 
         timer = object : CountDownTimer(5000, 1) {
             override fun onTick(seconds: Long) {
@@ -37,7 +39,7 @@ class TimerGameFragment : BaseFragmentGame<FragmentTimerGameBinding>() {
                     counter = seconds.toInt()
                     timerText.text = String.format("%1d:%03d", counter / 1000, counter % 1000)
 
-                    val currentPlayer = selectedPlayers[player]
+                    val currentPlayer = repeatPlayers[player]
 
                     playerName.text = currentPlayer.name
                     if (counter < currentPlayer.timerBest) {
@@ -69,7 +71,7 @@ class TimerGameFragment : BaseFragmentGame<FragmentTimerGameBinding>() {
             }
 
             override fun onFinish() {
-                val currentPlayer = selectedPlayers[player]
+                val currentPlayer = repeatPlayers[player]
                 timerText.text = "Время вышло"
                 playerName.isClickable = false
                 currentPlayer.id?.let {
@@ -90,27 +92,22 @@ class TimerGameFragment : BaseFragmentGame<FragmentTimerGameBinding>() {
     override fun onResume() {
         super.onResume()
 
-        var winCard = binding.winCard
-        winCard.root.beGone()
-
-        if (player < selectedPlayers.size) {
+        if (player < repeatPlayers.size) {
             binding.timerText.beVisible()
             binding.playerName.isClickable = false
             binding.playerName.setText(R.string.timer)
             counter = 0
             binding.timerText.text = "5:000"
             binding.btnStart.beVisible()
-            binding.btnStart.text = selectedPlayers[player].name
+            binding.btnStart.text = repeatPlayers[player].name
             binding.btnStart.setOnClickListener {
                 binding.playerName.isClickable = true
                 timer?.start()
                 binding.btnStart.beGone()
             }
         } else {
-            var bestPlayer: Player
 
             binding.timerText.beGone()
-            winCard.root.beVisible()
             binding.btnStart.beGone()
             //Glide.with(requireActivity()).load(R.drawable.salut_2).into(winCard.imageSalut)
 
@@ -119,24 +116,23 @@ class TimerGameFragment : BaseFragmentGame<FragmentTimerGameBinding>() {
                 for (i in allPlayerInThisGame) {
                     if (i.timerBest < bestPlayer.timerBest) bestPlayer = i
                 }
-                bestPlayer.id?.let { db.updateTimerWin(bestPlayer.timerWins + 1, it) }
-                winCard.winnerName.text = "${bestPlayer.name}"
-                winCard.result.text = "${bestPlayer.timerBest} мс"
-            }
-
-
-
-            winCard.btnPlayers.setOnClickListener {
-                navController.popBackStack()
-            }
-            winCard.btnGames.setOnClickListener {
-                navController.popBackStack()
-                navController.navigate(R.id.navigation_games)
-            }
-            winCard.btnRepeat.setOnClickListener {
-                player = 0
-                allPlayerInThisGame.clear()
-                onResume()
+                for (i in allPlayerInThisGame){
+                    if (i.timerBest == bestPlayer.timerBest) multiplyWinners.add(i)
+                }
+                Log.e("multi", "$multiplyWinners")
+                if (multiplyWinners.size > 1){
+                    allPlayerInThisGame.clear()
+                    repeatPlayers.clear()
+                    for (i in multiplyWinners){
+                        i.id?.let { db.getById(it).let { repeatPlayers.add(it) } }
+                    }
+                    multiplyWinners.clear()
+                    player = 0
+                    onResume()
+                } else {
+                    bestPlayer.id?.let { db.updateTimerWin(bestPlayer.timerWins + 1, it) }
+                    navController.navigate(R.id.winnerCardFragment)
+                }
             }
         }
     }

@@ -5,8 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/Widget.Material3.CardView.Elevated"
     app:cardElevation="4dp"
-    android:layout_marginTop="4dp"
-    android:layout_marginHorizontal="8dp"
+    android:layout_marginVertical="4dp"
+    android:layout_marginHorizontal="12dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -14,18 +14,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="8dp"
-
         android:animateLayoutChanges="true"
         >
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/player_name"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="Никита"
+            android:maxLines="1"
+            android:ellipsize="end"
             android:textSize="28sp"
             app:layout_constraintBottom_toBottomOf="@+id/checkbox_setting"
+            app:layout_constraintEnd_toStartOf="@+id/checkbox_setting"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/checkbox_setting" />
 

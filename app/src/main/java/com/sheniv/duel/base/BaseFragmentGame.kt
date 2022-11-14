@@ -7,6 +7,6 @@ abstract class BaseFragmentGame<VIEW_BINDING : ViewBinding> : BaseFragment<VIEW_
 
     override fun onDestroyView() {
         super.onDestroyView()
-        selectedPlayers = arrayListOf()
+        //selectedPlayers = arrayListOf()
     }
 }

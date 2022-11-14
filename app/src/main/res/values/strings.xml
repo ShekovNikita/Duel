@@ -28,4 +28,10 @@
     <string name="result">С результатом:</string>
     <string name="winner">Победитель</string>
     <string name="training">Тренировка</string>
+    <string name="ads">Посмотрите пожалуйста рекламу\n(так вы поможете разработчику)</string>
+    <string name="cooperation">Для сотрудничества с разработчиком\nпросто напишите (email)</string>
+    <string name="other_developer_apps">Другие приложения разработчика</string>
+    <string name="watch_ads">Посмотреть рекламу</string>
+    <string name="write">Написать</string>
+    <string name="about_developer">О разработчике</string>
 </resources>

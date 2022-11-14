@@ -52,4 +52,9 @@
         android:name="com.sheniv.duel.fragments.PlayerInfoFragment"
         android:label="fragment_player_info"
         tools:layout="@layout/fragment_player_info" />
+    <fragment
+        android:id="@+id/winnerCardFragment"
+        android:name="com.sheniv.duel.games.WinnerCardFragment"
+        android:label="fragment_winner_card"
+        tools:layout="@layout/fragment_winner_card" />
 </navigation>

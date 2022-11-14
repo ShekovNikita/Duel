@@ -18,6 +18,8 @@ var selectedPlayers = arrayListOf<Player>()
 val allGames = AllGames().allGames()
 lateinit var db: PlayerDatabaseDao
 lateinit var currentPlayerInfo: Player
+lateinit var bestPlayer: Player
+
 
 fun View.beVisible() {
     this.visibility = View.VISIBLE

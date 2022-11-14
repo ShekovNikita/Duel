@@ -11,7 +11,7 @@ data class Player (
     var id: Int? = null,
 
     //@ColumnInfo(name = "name")
-    val name: String,
+    val name: String = "",
 
     //@ColumnInfo(name = "duel")
     var duel: Int = 0,

@@ -20,7 +20,7 @@ class SelectPlayersFragment : BaseFragment<FragmentSelectPlayersBinding>() {
         recyclerPlayers.adapter = SelectPlayersAdapter(db.getAll())
 
         btnContinue.setOnClickListener {
-            if(selectedPlayers.size != 0) {
+            if(selectedPlayers.size > 1) {
                 if (selectedGame.name == R.string.duel && selectedPlayers.size != 2) {
                     showToast("В игре Дуэль должно быть 2 игрока")
                 } else {
@@ -30,7 +30,7 @@ class SelectPlayersFragment : BaseFragment<FragmentSelectPlayersBinding>() {
                         R.string.timer -> navController.navigate(R.id.timerGameFragment)
                     }
                 }
-            } else { showToast("Вы не выбрали игроков") }
+            } else { showToast("Играть могут минимум 2 игрока") }
         }
     }
 

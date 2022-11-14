@@ -1,5 +1,6 @@
 package com.sheniv.duel.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,21 +21,25 @@ class PlayerRatingAdapter(
 
     init {
         if (gameName == R.string.stopwatch) {
-            sortedList = listPlayer.sortedByDescending { it.stopwatchBest}
+            sortedList = listPlayer.sortedByDescending { it.stopwatchBest }
         }
         if (gameName == R.string.timer) {
             sortedList = listPlayer.sortedWith(compareBy { it.timerBest })
         }
         if (gameName == R.string.duel) {
-            sortedList = listPlayer.sortedWith(compareBy { it.duelWins })
+            sortedList = listPlayer.sortedByDescending { it.duelWins }
         }
-        if (gameName == R.string.soon){ sortedList = arrayListOf(Player(name = "SOON")) }
+        if (gameName == R.string.soon) {
+            listPlayer = arrayListOf(Player(name = "..."))
+            sortedList = listPlayer
+            Log.e("sorted", "$sortedList")
+        }
     }
 
     inner class PlayerRatingViewHolder(item: View) : RecyclerView.ViewHolder(item) {
         private val binding = ItemPlayerRatingBinding.bind(item)
         val rating = binding.rating
-        fun bind(player: Player) = with(binding){
+        fun bind(player: Player) = with(binding) {
             best.beVisible()
             textBest.beVisible()
             playerName.text = player.name
@@ -56,12 +61,16 @@ class PlayerRatingAdapter(
                     best.beGone()
                     textBest.beGone()
                 }
-                R.string.soon -> {}
+                R.string.soon -> {
+                    allGames.text = "-"
+                    wins.text = "-"
+                    best.text = "-"
+                }
             }
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)=
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         PlayerRatingViewHolder(
             LayoutInflater
                 .from(parent.context)

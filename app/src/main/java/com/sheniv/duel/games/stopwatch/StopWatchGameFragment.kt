@@ -2,16 +2,14 @@ package com.sheniv.duel.games.stopwatch
 
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.sheniv.duel.R
 import com.sheniv.duel.base.BaseFragmentGame
 import com.sheniv.duel.database.room.Player
 import com.sheniv.duel.databinding.FragmentStopWatchGameBinding
-import com.sheniv.duel.extantion.beGone
-import com.sheniv.duel.extantion.beVisible
-import com.sheniv.duel.extantion.db
-import com.sheniv.duel.extantion.selectedPlayers
+import com.sheniv.duel.extantion.*
 
 class StopWatchGameFragment : BaseFragmentGame<FragmentStopWatchGameBinding>() {
 
@@ -19,6 +17,8 @@ class StopWatchGameFragment : BaseFragmentGame<FragmentStopWatchGameBinding>() {
     var player = 0
     var counter = 0
     val allPlayerInThisGame = arrayListOf<Player>()
+    val repeatPlayers = arrayListOf<Player>()
+    val multiplyWinners = arrayListOf<Player>()
 
     override fun createViewBinding(
         inflater: LayoutInflater,
@@ -27,6 +27,8 @@ class StopWatchGameFragment : BaseFragmentGame<FragmentStopWatchGameBinding>() {
 
     override fun FragmentStopWatchGameBinding.onBindView(savedInstanceState: Bundle?) {
 
+        repeatPlayers.addAll(selectedPlayers)
+
         timer = object : CountDownTimer(5000, 1) {
             override fun onTick(seconds: Long) {
                 timerText.text = String.format("%1d:%03d", seconds / 1000, seconds % 1000)
@@ -34,8 +36,8 @@ class StopWatchGameFragment : BaseFragmentGame<FragmentStopWatchGameBinding>() {
 
             override fun onFinish() {
                 playerCounter.isClickable = false
-                timerText.text = selectedPlayers[player].name
-                val currentPlayer = selectedPlayers[player]
+                timerText.text = repeatPlayers[player].name
+                val currentPlayer = repeatPlayers[player]
 
                 if (currentPlayer.stopwatchBest < counter) {
                     currentPlayer.id?.let {
@@ -68,17 +70,14 @@ class StopWatchGameFragment : BaseFragmentGame<FragmentStopWatchGameBinding>() {
     override fun onResume() {
         super.onResume()
 
-        var winCard = binding.winCard
-        winCard.root.beGone()
-
-        if (player < selectedPlayers.size) {
+        if (player < repeatPlayers.size) {
             counter = 0
             with(binding) {
                 playerCounter.textSize = 100f
                 timerText.beVisible()
                 timerText.text = "5:000"
                 btnStart.beVisible()
-                btnStart.text = selectedPlayers[player].name
+                btnStart.text = repeatPlayers[player].name
                 playerCounter.text = counter.toString()
             }
             binding.btnStart.setOnClickListener {
@@ -97,11 +96,9 @@ class StopWatchGameFragment : BaseFragmentGame<FragmentStopWatchGameBinding>() {
                 }
             }
         } else {
-            var bestPlayer: Player
-            binding.timerText.beGone()
-            winCard.root.beVisible()
-            binding.btnStart.beGone()
 
+            binding.timerText.beGone()
+            binding.btnStart.beGone()
             //Glide.with(requireActivity()).load(R.drawable.salut_2).into(winCard.imageSalut)
 
             if (allPlayerInThisGame.size != 1) {
@@ -109,20 +106,22 @@ class StopWatchGameFragment : BaseFragmentGame<FragmentStopWatchGameBinding>() {
                 for (i in allPlayerInThisGame) {
                     if (i.stopwatchBest > bestPlayer.stopwatchBest) bestPlayer = i
                 }
-                bestPlayer.id?.let { db.updateStopwatchWin(bestPlayer.stopwatchWins + 1, it) }
-                winCard.winnerName.text = "${bestPlayer.name}"
-                winCard.result.text = "${bestPlayer.stopwatchBest}"
-            }
-            winCard.btnPlayers.setOnClickListener {
-                navController.popBackStack()
-            }
-            winCard.btnGames.setOnClickListener {
-                navController.navigate(R.id.navigation_games)
-            }
-            winCard.btnRepeat.setOnClickListener {
-                player = 0
-                allPlayerInThisGame.clear()
-                onResume()
+                for (i in allPlayerInThisGame){
+                    if (i.stopwatchBest == bestPlayer.stopwatchBest) multiplyWinners.add(i)
+                }
+                if (multiplyWinners.size > 1){
+                    allPlayerInThisGame.clear()
+                    repeatPlayers.clear()
+                    for (i in multiplyWinners){
+                        i.id?.let { db.getById(it)?.let { repeatPlayers.add(it) } }
+                    }
+                    multiplyWinners.clear()
+                    player = 0
+                    onResume()
+                } else {
+                    bestPlayer.id?.let { db.updateStopwatchWin(bestPlayer.stopwatchWins + 1, it) }
+                    navController.navigate(R.id.winnerCardFragment)
+                }
             }
         }
     }

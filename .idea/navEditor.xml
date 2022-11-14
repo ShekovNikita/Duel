@@ -125,13 +125,13 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="winFragment">
+                  <entry key="winnerCardFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-544" />
-                            <option name="y" value="309" />
+                            <option name="x" value="-347" />
+                            <option name="y" value="-325" />
                           </Point>
                         </option>
                       </LayoutPositions>
