@@ -29,9 +29,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="5.000"
+            tools:text="5.000"
             android:ellipsize="end"
-            android:textSize="60dp" />
+            android:textSize="60sp" />
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.button.MaterialButton
@@ -39,7 +39,7 @@
         style="@style/bottom_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="start"
+        tools:text="start"
         android:maxLines="1"
         android:ellipsize="middle"
         app:cornerRadius="16dp"

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginHorizontal="8dp"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="8dp">
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/rating"
@@ -12,7 +13,7 @@
         android:layout_height="wrap_content"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
-        android:text="12"
+        tools:text="12"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -21,9 +22,9 @@
         style="@style/Widget.Material3.CardView.Elevated"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-
         android:layout_margin="4dp"
+
+        android:layout_marginEnd="8dp"
         app:cardElevation="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,14 +42,14 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:padding="0dp"
-                android:maxLines="1"
                 android:ellipsize="end"
-                android:text="Никита"
+                android:maxLines="1"
+                android:padding="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/materialTextView7"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Никита" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/materialTextView7"
@@ -60,14 +61,14 @@
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/materialTextView6"
                 style="@style/item_player_rating_end_text"
-                android:text="Побед"
+                android:text="@string/wins"
                 app:layout_constraintEnd_toStartOf="@+id/text_best"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/text_best"
                 style="@style/item_player_rating_end_text"
-                android:text="Лучшее"
+                android:text="@string/best"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -75,28 +76,28 @@
                 android:id="@+id/all_games"
                 style="@style/item_player_rating_end_text"
                 android:padding="4dp"
-                android:text="1213"
                 app:layout_constraintEnd_toEndOf="@+id/materialTextView7"
                 app:layout_constraintStart_toStartOf="@+id/materialTextView7"
-                app:layout_constraintTop_toBottomOf="@+id/materialTextView7" />
+                app:layout_constraintTop_toBottomOf="@+id/materialTextView7"
+                tools:text="1213" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/wins"
                 style="@style/item_player_rating_end_text"
                 android:padding="4dp"
-                android:text="21"
                 app:layout_constraintEnd_toEndOf="@+id/materialTextView6"
                 app:layout_constraintStart_toEndOf="@+id/materialTextView7"
-                app:layout_constraintTop_toBottomOf="@+id/materialTextView6" />
+                app:layout_constraintTop_toBottomOf="@+id/materialTextView6"
+                tools:text="21" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/best"
-                android:padding="4dp"
-                android:text="232"
                 style="@style/item_player_rating_end_text"
+                android:padding="4dp"
                 app:layout_constraintEnd_toEndOf="@+id/text_best"
                 app:layout_constraintStart_toEndOf="@+id/materialTextView6"
-                app:layout_constraintTop_toBottomOf="@+id/text_best" />
+                app:layout_constraintTop_toBottomOf="@+id/text_best"
+                tools:text="232" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -81,7 +81,7 @@
                     style="@style/TextAppearance.Material3.HeadlineSmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="323"
+                    tools:text="323"
                     app:layout_constraintEnd_toEndOf="@+id/winner"
                     app:layout_constraintStart_toStartOf="@+id/winner"
                     app:layout_constraintTop_toBottomOf="@+id/result_text" />

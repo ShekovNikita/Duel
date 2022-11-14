@@ -34,4 +34,6 @@
     <string name="watch_ads">Посмотреть рекламу</string>
     <string name="write">Написать</string>
     <string name="about_developer">О разработчике</string>
+    <string name="wins">Побед</string>
+    <string name="best">Лучшее</string>
 </resources>
