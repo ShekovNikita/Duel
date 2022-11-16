@@ -62,7 +62,7 @@ class StopWatchGameFragment : BaseFragmentGame<FragmentStopWatchGameBinding>() {
                 )
 
                 btnStart.beVisible()
-                btnStart.text = "Далее"
+                btnStart.setText(R.string.continued)
             }
         }
     }
@@ -113,7 +113,7 @@ class StopWatchGameFragment : BaseFragmentGame<FragmentStopWatchGameBinding>() {
                     allPlayerInThisGame.clear()
                     repeatPlayers.clear()
                     for (i in multiplyWinners){
-                        i.id?.let { db.getById(it)?.let { repeatPlayers.add(it) } }
+                        i.id?.let { db.getById(it).let { repeatPlayers.add(it) } }
                     }
                     multiplyWinners.clear()
                     player = 0

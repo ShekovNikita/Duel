@@ -12,10 +12,20 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:text="@string/about_developer"
-        android:textSize="20sp"
+        android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/btn_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_info_24"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/materialTextView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/materialTextView2" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/materialTextView4"
@@ -44,13 +54,14 @@
         android:id="@+id/materialTextView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="20dp"
         android:text="@string/ads"
         android:gravity="center"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_cooperation" />
+
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_ads"
@@ -64,6 +75,18 @@
         app:layout_constraintTop_toBottomOf="@+id/materialTextView3" />
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_donation"
+        style="@style/Widget.Material3.Button.ElevatedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_money_24"
+        android:text="@string/donation"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_ads" />
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_play_market"
         style="@style/Widget.Material3.Button.ElevatedButton"
         android:layout_width="wrap_content"
@@ -73,7 +96,7 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_ads" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_donation" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="match_parent"
@@ -83,17 +106,5 @@
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_play_market" />
-
-    <com.google.android.gms.ads.AdView
-        xmlns:ads="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/adView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        ads:layout_constraintStart_toStartOf="parent"
-        ads:layout_constraintBottom_toBottomOf="parent"
-        ads:layout_constraintEnd_toEndOf="parent"
-        ads:adSize="BANNER"
-        ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
-    </com.google.android.gms.ads.AdView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

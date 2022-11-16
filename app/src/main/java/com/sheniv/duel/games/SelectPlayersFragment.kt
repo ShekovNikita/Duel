@@ -3,6 +3,7 @@ package com.sheniv.duel.games
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.app.SharedElementCallback
 import com.sheniv.duel.R
 import com.sheniv.duel.adapters.SelectPlayersAdapter
 import com.sheniv.duel.base.BaseFragment
@@ -22,7 +23,7 @@ class SelectPlayersFragment : BaseFragment<FragmentSelectPlayersBinding>() {
         btnContinue.setOnClickListener {
             if(selectedPlayers.size > 1) {
                 if (selectedGame.name == R.string.duel && selectedPlayers.size != 2) {
-                    showToast("В игре Дуэль должно быть 2 игрока")
+                    showToast(getString(R.string.duel_must_have_2_players))
                 } else {
                     when (selectedGame.name) {
                         R.string.stopwatch -> navController.navigate(R.id.stopWatchGameFragment)
@@ -30,8 +31,9 @@ class SelectPlayersFragment : BaseFragment<FragmentSelectPlayersBinding>() {
                         R.string.timer -> navController.navigate(R.id.timerGameFragment)
                     }
                 }
-            } else { showToast("Играть могут минимум 2 игрока") }
+            } else {
+                showToast(getString(R.string.minimum_2_players_can_play))
+            }
         }
     }
-
 }

@@ -1,5 +1,6 @@
 package com.sheniv.duel.extantion
 
+import android.app.Activity
 import android.content.Context
 import android.view.View
 import android.widget.Toast
@@ -20,6 +21,7 @@ lateinit var db: PlayerDatabaseDao
 lateinit var currentPlayerInfo: Player
 lateinit var bestPlayer: Player
 const val AD_UNIT_ID = "ca-app-pub-3940256099942544/5224354917"
+lateinit var ACTIVITY : Activity
 
 
 fun View.beVisible() {
@@ -35,7 +37,7 @@ fun View.beInvisible() {
 }
 
 fun Fragment.showToast(message: String) {
-    Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show()
+    Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
 }
 
 fun initDatabaseRoom(context: Context) {

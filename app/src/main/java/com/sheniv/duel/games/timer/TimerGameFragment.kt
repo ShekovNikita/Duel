@@ -32,7 +32,7 @@ class TimerGameFragment : BaseFragmentGame<FragmentTimerGameBinding>() {
         timer = object : CountDownTimer(5000, 1) {
             override fun onTick(seconds: Long) {
                 timerText.text = String.format("%1d:%03d", seconds / 1000, seconds % 1000)
-                playerName.text = "Стоп"
+                playerName.text = getString(R.string.stop)
                 playerName.isClickable = true
                 playerName.setOnClickListener {
                     this.cancel()
@@ -62,7 +62,7 @@ class TimerGameFragment : BaseFragmentGame<FragmentTimerGameBinding>() {
                     )
 
                     btnStart.beVisible()
-                    btnStart.text = "Далее"
+                    btnStart.setText(R.string.continued)
                     btnStart.setOnClickListener {
                         player++
                         onResume()
@@ -72,7 +72,7 @@ class TimerGameFragment : BaseFragmentGame<FragmentTimerGameBinding>() {
 
             override fun onFinish() {
                 val currentPlayer = repeatPlayers[player]
-                timerText.text = "Время вышло"
+                timerText.text = getString(R.string.time_is_over)
                 playerName.isClickable = false
                 currentPlayer.id?.let {
                     db.updateTimer(
@@ -83,7 +83,7 @@ class TimerGameFragment : BaseFragmentGame<FragmentTimerGameBinding>() {
                 allPlayerInThisGame.add(Player(name = currentPlayer.name, timerBest = 5000))
                 player++
                 btnStart.beVisible()
-                btnStart.text = "Далее"
+                btnStart.setText(R.string.continued)
                 btnStart.setOnClickListener { onResume() }
             }
         }

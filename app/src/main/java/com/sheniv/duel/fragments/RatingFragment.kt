@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.GridLayoutManager
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.sheniv.duel.R
 import com.sheniv.duel.adapters.ClickOnTheGame
 import com.sheniv.duel.adapters.GameAdapter
@@ -34,7 +35,35 @@ class RatingFragment : BaseFragment<FragmentRatingBinding>(), ClickOnTheGame {
     }
 
     override fun gameInfo(game: Game) {
-        
+
+        var title = ""
+        var message = ""
+
+        when (game.name){
+            R.string.duel -> {
+                title = getString(R.string.duel)
+                message = getString(R.string.duel_rating)
+            }
+            R.string.timer -> {
+                title = getString(R.string.timer)
+                message = getString(R.string.timer_rating)
+            }
+            R.string.stopwatch -> {
+                title = getString(R.string.stopwatch)
+                message = getString(R.string.stopwatch_rating)
+            }
+            R.string.soon -> {
+                title = getString(R.string.soon)
+                message = getString(R.string.rules_soon)
+            }
+        }
+
+        MaterialAlertDialogBuilder(requireActivity())
+            .setTitle(title)
+            .setMessage(message)
+            .setPositiveButton("OK") { dialog, _ ->
+                dialog.dismiss()
+            }.show()
     }
 
 }

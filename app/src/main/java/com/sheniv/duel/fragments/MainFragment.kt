@@ -1,5 +1,6 @@
 package com.sheniv.duel.fragments
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -20,11 +21,6 @@ import com.sheniv.duel.models.Game
 
 class MainFragment : BaseFragment<FragmentMainBinding>(), ClickOnTheGame {
 
-    lateinit var dialogView: View
-    lateinit var name: EditText
-    lateinit var inputLayout: TextInputLayout
-    lateinit var builder: MaterialAlertDialogBuilder
-
     override fun createViewBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
@@ -40,21 +36,10 @@ class MainFragment : BaseFragment<FragmentMainBinding>(), ClickOnTheGame {
     override fun selectTheGame(game: Game) {
         selectedGame = game
         if (game.name != R.string.soon) navController.navigate(R.id.selectPlayersFragment)
-    }
-
-    private fun initFieldsDialog() {
-        dialogView =
-            LayoutInflater.from(requireActivity()).inflate(R.layout.add_player_dialog, null)
-        name = dialogView.findViewById<EditText>(R.id.input_text)
-        inputLayout = dialogView.findViewById(R.id.input_layout)
-        builder = MaterialAlertDialogBuilder(requireActivity()).setView(dialogView)
+        else gameInfo(game)
     }
 
     override fun gameInfo(game: Game) {
-        initFieldsDialog()
-
-        inputLayout.beGone()
-        name.beGone()
 
         var title = ""
         var message = ""
@@ -62,23 +47,28 @@ class MainFragment : BaseFragment<FragmentMainBinding>(), ClickOnTheGame {
         when (game.name){
             R.string.duel -> {
                 title = getString(R.string.duel)
-                message = "Правила игры"
+                message = getString(R.string.rules_duel)
             }
             R.string.timer -> {
                 title = getString(R.string.timer)
-                message = "Правила игры"
+                message = getString(R.string.rules_timer)
             }
             R.string.stopwatch -> {
                 title = getString(R.string.stopwatch)
-                message = "Правила игры"
+                message = getString(R.string.rules_stopwatch)
+            }
+            R.string.soon -> {
+                title = getString(R.string.soon)
+                message = getString(R.string.rules_soon)
             }
         }
 
-        builder.setTitle(title).setMessage(message)
+        MaterialAlertDialogBuilder(requireActivity())
+            .setTitle(title)
+            .setMessage(message)
             .setPositiveButton("OK") { dialog, _ ->
                 dialog.dismiss()
-            }
-            .show()
+            }.show()
     }
 
 }

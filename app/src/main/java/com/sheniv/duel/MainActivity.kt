@@ -1,6 +1,7 @@
 package com.sheniv.duel
 
 import android.os.Bundle
+import android.util.Log
 import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
@@ -9,9 +10,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.room.Room
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.sheniv.duel.database.room.PlayerDatabase
-import com.sheniv.duel.extantion.bottomNavigationView
-import com.sheniv.duel.extantion.db
-import com.sheniv.duel.extantion.initDatabaseRoom
+import com.sheniv.duel.extantion.*
 import com.sheniv.duel.viewmodels.MainActivityViewModel
 
 class MainActivity : AppCompatActivity() {
@@ -24,10 +23,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         initDatabaseRoom(this)
-
+        ACTIVITY = this
         supportActionBar?.hide()
         bottomNavigationView = findViewById(R.id.bottom_navigation)
         bottomNavigation()
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        selectedPlayers.clear()
+        Log.e("selectedPlayers", "$selectedPlayers")
     }
 
     private fun bottomNavigation() {

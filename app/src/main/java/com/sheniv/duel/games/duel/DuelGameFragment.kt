@@ -16,7 +16,6 @@ import com.sheniv.duel.extantion.*
 class DuelGameFragment : BaseFragmentGame<FragmentDuelGameBinding>() {
 
     var timer: CountDownTimer? = null
-    private lateinit var chronometer: Chronometer
 
     override fun createViewBinding(
         inflater: LayoutInflater,

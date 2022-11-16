@@ -115,7 +115,7 @@ class PlayersFragment : BaseFragment<FragmentPlayersBinding>(), DeletePlayer, Up
     }
 
     override fun playerInfo(player: Player) {
-        currentPlayerInfo = player
-        navController.navigate(PlayersFragmentDirections.actionNavigationPlayersToPlayerInfoFragment())
+        //currentPlayerInfo = player
+        //navController.navigate(PlayersFragmentDirections.actionNavigationPlayersToPlayerInfoFragment())
     }
 }
