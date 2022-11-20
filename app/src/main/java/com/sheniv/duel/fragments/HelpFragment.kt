@@ -27,7 +27,7 @@ class HelpFragment : BaseFragment<FragmentHelpBinding>(), BillingProcessor.IBill
 
     override fun onResume() {
         super.onResume()
-        //loadInterAd()
+        loadInterAd()
     }
 
 
@@ -42,13 +42,13 @@ class HelpFragment : BaseFragment<FragmentHelpBinding>(), BillingProcessor.IBill
     ) = FragmentHelpBinding.inflate(inflater, container, false)
 
     override fun FragmentHelpBinding.onBindView(savedInstanceState: Bundle?) {
-        //initAdMob()
+        initAdMob()
         donationsInit()
         val play = "https://play.google.com/store/apps/dev?id=7801316179503456063"
         val play_market = Intent(Intent(Intent.ACTION_VIEW, Uri.parse(play)))
 
         btnAds.setOnClickListener {
-            //showInterAd()
+            showInterAd()
         }
 
         btnCooperation.setOnClickListener {
@@ -67,7 +67,6 @@ class HelpFragment : BaseFragment<FragmentHelpBinding>(), BillingProcessor.IBill
         btnDonation.setOnClickListener {
             bp?.consumePurchaseAsync("donations", object : BillingProcessor.IPurchasesResponseListener{
                 override fun onPurchasesSuccess() {
-
                 }
 
                 override fun onPurchasesError() {
@@ -87,7 +86,7 @@ class HelpFragment : BaseFragment<FragmentHelpBinding>(), BillingProcessor.IBill
             }.show()
     }
 
-    /*private fun initAdMob() {
+    private fun initAdMob() {
         MobileAds.initialize(requireActivity())
     }
 
@@ -142,7 +141,7 @@ class HelpFragment : BaseFragment<FragmentHelpBinding>(), BillingProcessor.IBill
                 showContent()
             }
         }
-    }*/
+    }
 
     private fun showContent() {
         showToast(getString(R.string.thank_you_for_watching_ads))

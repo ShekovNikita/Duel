@@ -4,6 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Duel.iml" filepath="$PROJECT_DIR$/.idea/modules/Duel.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Duel.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Duel.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Duel.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Duel.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Duel.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Duel.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Duel.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Duel.app.unitTest.iml" />
     </modules>
   </component>
 </project>

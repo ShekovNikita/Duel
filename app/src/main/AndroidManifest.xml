@@ -13,7 +13,7 @@
         android:theme="@style/Theme.Duel">
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713"/>
+            android:value="ca-app-pub-2440252298457934~4303286139"/>
         <activity
             android:name="com.sheniv.duel.MainActivity"
             android:exported="true">

@@ -20,7 +20,7 @@ val allGames = AllGames().allGames()
 lateinit var db: PlayerDatabaseDao
 lateinit var currentPlayerInfo: Player
 lateinit var bestPlayer: Player
-const val AD_UNIT_ID = "ca-app-pub-3940256099942544/5224354917"
+const val AD_UNIT_ID = "ca-app-pub-2440252298457934/3752907207"
 lateinit var ACTIVITY : Activity
 
 
