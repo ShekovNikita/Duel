@@ -57,4 +57,14 @@
         android:name="com.sheniv.duel.games.WinnerCardFragment"
         android:label="fragment_winner_card"
         tools:layout="@layout/fragment_winner_card" />
+    <fragment
+        android:id="@+id/fragment_registration"
+        android:name="com.sheniv.duel.fragments.RegistrationEmailFragment"
+        android:label="fragment_registration_email"
+        tools:layout="@layout/fragment_registration_email" />
+    <fragment
+        android:id="@+id/navigation_championship"
+        android:name="com.sheniv.duel.fragments.ChampionshipFragment"
+        android:label="fragment_championship"
+        tools:layout="@layout/fragment_championship" />
 </navigation>

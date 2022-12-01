@@ -19,4 +19,12 @@ class AllGames {
         allGames.add(soon)
         return allGames
     }
+
+    fun onlineGames() : ArrayList<Game>{
+        val allGames : ArrayList<Game> = arrayListOf()
+        allGames.add(stopWatch)
+        allGames.add(timer)
+
+        return allGames
+    }
 }

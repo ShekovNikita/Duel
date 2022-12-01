@@ -50,4 +50,8 @@
     <string name="duel_must_have_2_players">Duel must have 2 players</string>
     <string name="minimum_2_players_can_play">Minimum 2 players can play</string>
     <string name="donation">Donation</string>
+    <string name="about_registration">In order to take part in online championships, you must register</string>
+    <string name="battle">Battle</string>
+    <string name="sign_out">Sign out?</string>
+    <string name="alert_sign_out">After logging out of your account, you will not be able to take part in online competitions</string>
 </resources>

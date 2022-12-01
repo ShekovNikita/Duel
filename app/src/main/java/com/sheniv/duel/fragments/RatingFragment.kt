@@ -2,14 +2,11 @@ package com.sheniv.duel.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.cardview.widget.CardView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.sheniv.duel.R
-import com.sheniv.duel.adapters.ClickOnTheGame
+import com.sheniv.duel.adapters.interfaces.ClickOnTheGame
 import com.sheniv.duel.adapters.GameAdapter
 import com.sheniv.duel.adapters.PlayerRatingAdapter
 import com.sheniv.duel.base.BaseFragment

@@ -8,15 +8,14 @@ import android.widget.EditText
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputLayout
 import com.sheniv.duel.R
-import com.sheniv.duel.adapters.DeletePlayer
-import com.sheniv.duel.adapters.PlayerInfo
+import com.sheniv.duel.adapters.interfaces.DeletePlayer
+import com.sheniv.duel.adapters.interfaces.PlayerInfo
 import com.sheniv.duel.adapters.PlayersAdapter
-import com.sheniv.duel.adapters.UpdatePlayer
+import com.sheniv.duel.adapters.interfaces.UpdatePlayer
 import com.sheniv.duel.base.BaseFragment
 import com.sheniv.duel.database.room.Player
 import com.sheniv.duel.databinding.FragmentPlayersBinding
 import com.sheniv.duel.extantion.beGone
-import com.sheniv.duel.extantion.currentPlayerInfo
 import com.sheniv.duel.extantion.db
 import com.sheniv.duel.extantion.showToast
 

@@ -1,20 +1,14 @@
 package com.sheniv.duel.fragments
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.room.Room
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.textfield.TextInputLayout
 import com.sheniv.duel.R
-import com.sheniv.duel.adapters.ClickOnTheGame
+import com.sheniv.duel.adapters.interfaces.ClickOnTheGame
 import com.sheniv.duel.adapters.GameAdapter
 import com.sheniv.duel.base.BaseFragment
-import com.sheniv.duel.database.room.PlayerDatabase
 import com.sheniv.duel.databinding.FragmentMainBinding
 import com.sheniv.duel.extantion.*
 import com.sheniv.duel.models.Game

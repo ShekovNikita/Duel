@@ -50,4 +50,8 @@
     <string name="duel_must_have_2_players">В игре Дуэль должно быть 2 игрока</string>
     <string name="minimum_2_players_can_play">Играть могут минимум 2 игрока</string>
     <string name="donation">Помощь</string>
+    <string name="about_registration">Для того чтобы принимать участие в онлайн чемпионатах необходимо зарегистрироваться</string>
+    <string name="sign_out">Выйти из аккаунта?</string>
+    <string name="alert_sign_out">Выйдя из аккаунта вы не сможете принимать участие в онлайн соревнованиях</string>
+    <string name="battle">Баттл</string>
 </resources>

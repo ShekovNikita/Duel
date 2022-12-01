@@ -11,6 +11,7 @@ import androidx.room.Room
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.sheniv.duel.database.room.PlayerDatabase
 import com.sheniv.duel.extantion.*
+import com.sheniv.duel.firebase.initFirebase
 import com.sheniv.duel.viewmodels.MainActivityViewModel
 
 class MainActivity : AppCompatActivity() {
@@ -27,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.hide()
         bottomNavigationView = findViewById(R.id.bottom_navigation)
         bottomNavigation()
+        initFirebase()
     }
 
     override fun onBackPressed() {

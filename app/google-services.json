@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1018389842743",
+    "firebase_url": "https://duel-e2655-default-rtdb.firebaseio.com",
+    "project_id": "duel-e2655",
+    "storage_bucket": "duel-e2655.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1018389842743:android:7b44b874f07569d51ea8b2",
+        "android_client_info": {
+          "package_name": "com.sheniv.duel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1018389842743-c8co74ik6ca58frp9gpaltlqrv2l4jcl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sheniv.duel",
+            "certificate_hash": "3eb8a853f8da30a053a223c64b8ae932941b1e8a"
+          }
+        },
+        {
+          "client_id": "1018389842743-4lb7uhttd554qe2s29do7oqgl3diqa5d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcMusHFkbgM7cn1iVB5XTEoYx-CCdAl14"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1018389842743-4lb7uhttd554qe2s29do7oqgl3diqa5d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

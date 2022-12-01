@@ -13,6 +13,10 @@
         android:icon="@drawable/ic_add_person"
         android:title="@string/players" />
     <item
+        android:id="@+id/navigation_championship"
+        android:icon="@drawable/ic_baseline_people_outline_24"
+        android:title="@string/battle" />
+    <item
         android:id="@+id/navigation_help"
         android:icon="@drawable/ic_money_24"
         android:title="@string/help" />

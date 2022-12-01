@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.sheniv.duel.R
+import com.sheniv.duel.adapters.interfaces.ClickOnTheGame
 import com.sheniv.duel.databinding.ItemGameBinding
 import com.sheniv.duel.models.Game
 

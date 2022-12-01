@@ -8,6 +8,9 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.sheniv.duel.R
 import com.sheniv.duel.adapters.PlayersAdapter.PlayerViewHolder
+import com.sheniv.duel.adapters.interfaces.DeletePlayer
+import com.sheniv.duel.adapters.interfaces.PlayerInfo
+import com.sheniv.duel.adapters.interfaces.UpdatePlayer
 import com.sheniv.duel.database.room.Player
 import com.sheniv.duel.databinding.ItemPlayerBinding
 import com.sheniv.duel.extantion.beGone
