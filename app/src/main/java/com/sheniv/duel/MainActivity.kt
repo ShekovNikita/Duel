@@ -44,5 +44,8 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
         setupActionBarWithNavController(navController, viewModelMain.getAppBarConfiguration())
         NavigationUI.setupWithNavController(navView, navController)
+
+        var badge = navView.getOrCreateBadge(R.id.navigation_championship)
+        //badge.number = ""
     }
 }

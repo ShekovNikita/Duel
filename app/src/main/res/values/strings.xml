@@ -54,4 +54,7 @@
     <string name="sign_out">Выйти из аккаунта?</string>
     <string name="alert_sign_out">Выйдя из аккаунта вы не сможете принимать участие в онлайн соревнованиях</string>
     <string name="battle">Баттл</string>
+    <string name="last">Последнее</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

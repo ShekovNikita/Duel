@@ -59,12 +59,22 @@
         tools:layout="@layout/fragment_winner_card" />
     <fragment
         android:id="@+id/fragment_registration"
-        android:name="com.sheniv.duel.fragments.RegistrationEmailFragment"
+        android:name="com.sheniv.duel.fragments.online.RegistrationEmailFragment"
         android:label="fragment_registration_email"
         tools:layout="@layout/fragment_registration_email" />
     <fragment
         android:id="@+id/navigation_championship"
-        android:name="com.sheniv.duel.fragments.ChampionshipFragment"
+        android:name="com.sheniv.duel.fragments.online.ChampionshipFragment"
         android:label="fragment_championship"
         tools:layout="@layout/fragment_championship" />
+    <fragment
+        android:id="@+id/onlineStopwatchFragment"
+        android:name="com.sheniv.duel.fragments.online.OnlineStopwatchFragment"
+        android:label="fragment_online_stopwatch"
+        tools:layout="@layout/fragment_online_stopwatch" />
+    <fragment
+        android:id="@+id/onlineTimerFragment"
+        android:name="com.sheniv.duel.fragments.online.OnlineTimerFragment"
+        android:label="fragment_online_timer"
+        tools:layout="@layout/fragment_online_timer" />
 </navigation>
