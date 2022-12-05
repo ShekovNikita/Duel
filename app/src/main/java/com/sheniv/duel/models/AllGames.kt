@@ -27,4 +27,16 @@ class AllGames {
 
         return allGames
     }
+
+    fun getOnlineIcon(): ArrayList<Int>{
+        val icons = arrayListOf<Int>()
+        onlineGames().forEach { icons.add(it.icon) }
+        return icons
+    }
+
+    fun getOnlineName(): ArrayList<Int>{
+        val names = arrayListOf<Int>()
+        onlineGames().forEach { names.add(it.name) }
+        return names
+    }
 }

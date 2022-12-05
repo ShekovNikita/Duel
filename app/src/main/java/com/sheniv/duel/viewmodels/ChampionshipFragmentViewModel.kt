@@ -38,7 +38,6 @@ class ChampionshipFragmentViewModel: ViewModel() {
                             }
                         }
                         _playersLiveData.postValue(allPlayers)
-                        Log.e("flowers", "$allPlayers")
                     }
 
                     override fun onCancelled(error: DatabaseError) {

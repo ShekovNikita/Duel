@@ -58,18 +58,29 @@ class RegistrationEmailFragment : BaseFragment<FragmentRegistrationEmailBinding>
             .addOnSuccessListener { authResult ->
                 val email = AUTH.currentUser?.email.toString()
                 val uid = AUTH.currentUser?.uid.toString()
+                val name = AUTH.currentUser?.displayName.toString()
+                val photo = AUTH.currentUser?.photoUrl.toString()
                 REF_DATABASE_ROOT.child(NODE_USER).child(uid)
                     .updateChildren(mapOf(
                         CHILD_EMAIL to email,
                         CHILD_ID to uid,
-                        CHILD_NAME to AUTH.currentUser?.displayName.toString(),
-                        CHILD_PHOTO_URL to AUTH.currentUser?.photoUrl.toString()
+                        CHILD_NAME to name,
+                        CHILD_PHOTO_URL to photo
                     ))
                     .addOnCompleteListener {
                         if (it.isSuccessful){
                             Log.e("email", "---------$email")
+                            REF_DATABASE_ROOT.child(NODE_PLAYERS_ONLINE)
+                                .child(uid)
+                                .updateChildren(
+                                    mapOf(
+                                        CHILD_NAME to name,
+                                        CHILD_PHOTO_URL to photo,
+                                    )
+                                )
                         }
                     }
+
                 /*if (authResult.additionalUserInfo!!.isNewUser) {
                     showToast("Created\n$email")
                 } else {

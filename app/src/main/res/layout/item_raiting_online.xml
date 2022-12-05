@@ -19,7 +19,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/materialCardView2"
         style="@style/Widget.Material3.CardView.Elevated"

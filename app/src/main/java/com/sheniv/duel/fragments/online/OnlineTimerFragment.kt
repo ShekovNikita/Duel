@@ -29,7 +29,7 @@ class OnlineTimerFragment : BaseFragment<FragmentOnlineTimerBinding>() {
 
         var currentUser = UserOnline()
 
-        REF_DATABASE_ROOT.child(NODE_PLAYERS_ONLINE).child(USER_FIREBASE.name)
+        REF_DATABASE_ROOT.child(NODE_PLAYERS_ONLINE).child(USER_FIREBASE.id)
             .addListenerForSingleValueEvent(AppValueEventListener {
                 currentUser = it.getValue(UserOnline::class.java) ?: UserOnline()
             })
@@ -45,7 +45,7 @@ class OnlineTimerFragment : BaseFragment<FragmentOnlineTimerBinding>() {
                     timerText.text = String.format("%1d:%03d", counter / 1000, counter % 1000)
 
                     REF_DATABASE_ROOT.child(NODE_PLAYERS_ONLINE)
-                        .child(USER_FIREBASE.name)
+                        .child(USER_FIREBASE.id)
                         .updateChildren(mapOf(
                             CHILD_TIMER to counter,
                             CHILD_TIMER_GAMES to currentUser.timer_games + 1
@@ -60,7 +60,7 @@ class OnlineTimerFragment : BaseFragment<FragmentOnlineTimerBinding>() {
                 playerName.isClickable = false
 
                 REF_DATABASE_ROOT.child(NODE_PLAYERS_ONLINE)
-                    .child(USER_FIREBASE.name)
+                    .child(USER_FIREBASE.id)
                     .updateChildren(mapOf(
                         CHILD_TIMER to 5000,
                         CHILD_TIMER_GAMES to currentUser.timer_games + 1
@@ -81,7 +81,7 @@ class OnlineTimerFragment : BaseFragment<FragmentOnlineTimerBinding>() {
         with(binding) {
             btnStart.beVisible()
             btnStart.setText(R.string.continued)
-            btnStart.setOnClickListener { navController.navigate(R.id.navigation_championship) }
+            btnStart.setOnClickListener { navController.popBackStack() }
         }
     }
 

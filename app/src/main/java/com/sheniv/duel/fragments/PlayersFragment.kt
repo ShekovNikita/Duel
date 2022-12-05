@@ -9,7 +9,6 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputLayout
 import com.sheniv.duel.R
 import com.sheniv.duel.adapters.interfaces.DeletePlayer
-import com.sheniv.duel.adapters.interfaces.PlayerInfo
 import com.sheniv.duel.adapters.PlayersAdapter
 import com.sheniv.duel.adapters.interfaces.UpdatePlayer
 import com.sheniv.duel.base.BaseFragment
@@ -19,10 +18,9 @@ import com.sheniv.duel.extantion.beGone
 import com.sheniv.duel.extantion.db
 import com.sheniv.duel.extantion.showToast
 
-class PlayersFragment : BaseFragment<FragmentPlayersBinding>(), DeletePlayer, UpdatePlayer,
-    PlayerInfo {
+class PlayersFragment : BaseFragment<FragmentPlayersBinding>(), DeletePlayer, UpdatePlayer{
 
-    private val simpleAdapter by lazy { PlayersAdapter(this, this, this) }
+    private val simpleAdapter by lazy { PlayersAdapter(this, this) }
 
     lateinit var dialogView: View
     lateinit var name: EditText
@@ -111,10 +109,5 @@ class PlayersFragment : BaseFragment<FragmentPlayersBinding>(), DeletePlayer, Up
 
     override fun updatePlayer(player: Player) {
         updateNameDialog(player)
-    }
-
-    override fun playerInfo(player: Player) {
-        //currentPlayerInfo = player
-        //navController.navigate(PlayersFragmentDirections.actionNavigationPlayersToPlayerInfoFragment())
     }
 }

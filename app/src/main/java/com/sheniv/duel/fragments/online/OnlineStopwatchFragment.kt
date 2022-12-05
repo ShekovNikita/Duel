@@ -27,7 +27,7 @@ class OnlineStopwatchFragment : BaseFragment<FragmentOnlineStopwatchBinding>() {
 
         var currentUser = UserOnline()
 
-        REF_DATABASE_ROOT.child(NODE_PLAYERS_ONLINE).child(USER_FIREBASE.name)
+        REF_DATABASE_ROOT.child(NODE_PLAYERS_ONLINE).child(USER_FIREBASE.id)
             .addListenerForSingleValueEvent(AppValueEventListener {
                 currentUser = it.getValue(UserOnline::class.java) ?: UserOnline()
             })
@@ -42,7 +42,7 @@ class OnlineStopwatchFragment : BaseFragment<FragmentOnlineStopwatchBinding>() {
                 timerText.setText(R.string.time_is_over)
 
                 REF_DATABASE_ROOT.child(NODE_PLAYERS_ONLINE)
-                    .child(USER_FIREBASE.name)
+                    .child(USER_FIREBASE.id)
                     .updateChildren(mapOf(
                         CHILD_STOPWATCH to counter,
                         CHILD_STOPWATCH_GAMES to currentUser.stopwatch_games + 1
@@ -73,9 +73,7 @@ class OnlineStopwatchFragment : BaseFragment<FragmentOnlineStopwatchBinding>() {
                     counter++
                     binding.playerCounter.text = counter.toString()
 
-                    binding.btnStart.setOnClickListener {
-                        navController.navigate(R.id.navigation_championship)
-                    }
+                    binding.btnStart.setOnClickListener { navController.popBackStack() }
                 }
             }
     }

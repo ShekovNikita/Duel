@@ -1,25 +1,28 @@
 package com.sheniv.duel.fragments.online
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import com.sheniv.duel.R
-import com.sheniv.duel.adapters.OnlineGameAdapter
-import com.sheniv.duel.adapters.OnlineRatingAdapter
-import com.sheniv.duel.adapters.interfaces.ClickOnTheGame
+import com.sheniv.duel.adapters.FragmentStateAdapter
 import com.sheniv.duel.base.BaseFragment
 import com.sheniv.duel.databinding.FragmentChampionshipBinding
-import com.sheniv.duel.extantion.*
+import com.sheniv.duel.extantion.AppValueEventListener
 import com.sheniv.duel.firebase.*
 import com.sheniv.duel.models.AllGames
-import com.sheniv.duel.models.Game
 import com.sheniv.duel.models.UserFirebase
-import com.sheniv.duel.viewmodels.ChampionshipFragmentViewModel
 
-class ChampionshipFragment : BaseFragment<FragmentChampionshipBinding>(), ClickOnTheGame {
+class ChampionshipFragment : BaseFragment<FragmentChampionshipBinding>() {
 
-    val viewModel = ChampionshipFragmentViewModel()
+    private val topFragment = listOf<Fragment>(
+        OnlineStopwatchRatingFragment(),
+        OnlineTimerRatingFragment()
+    )
 
     override fun createViewBinding(
         inflater: LayoutInflater,
@@ -34,7 +37,14 @@ class ChampionshipFragment : BaseFragment<FragmentChampionshipBinding>(), ClickO
             exitDialog()
         }
 
-        recyclerGames.adapter = OnlineGameAdapter(this@ChampionshipFragment, AllGames().onlineGames())
+        val tabLayout = requireView().findViewById<TabLayout>(R.id.tab_layout)
+
+        viewPager2.adapter = FragmentStateAdapter(requireActivity(), topFragment)
+        TabLayoutMediator(tabLayout, viewPager2) { tab, position ->
+            tab.setIcon(AllGames().getOnlineIcon()[position])
+            tab.setText(AllGames().getOnlineName()[position])
+        }.attach()
+
     }
 
     private fun checkUser() {
@@ -48,10 +58,12 @@ class ChampionshipFragment : BaseFragment<FragmentChampionshipBinding>(), ClickO
 
     private fun initUserFirebase() {
         CURRENT_UID = AUTH.currentUser?.uid.toString()
+        Log.e("current", "$CURRENT_UID")
         REF_DATABASE_ROOT.child(NODE_USER).child(CURRENT_UID)
             .addListenerForSingleValueEvent(AppValueEventListener {
                 USER_FIREBASE = it.getValue(UserFirebase::class.java) ?: UserFirebase()
             })
+
     }
 
     private fun exitDialog() {
@@ -65,25 +77,5 @@ class ChampionshipFragment : BaseFragment<FragmentChampionshipBinding>(), ClickO
             }
             .setNegativeButton(getString(R.string.cancel), null)
             .show()
-    }
-
-    override fun selectTheGame(game: Game) {
-        viewModel.playersLiveData.observe(viewLifecycleOwner){
-            binding.recyclerPlayersRating.adapter = OnlineRatingAdapter(game.name, it, requireActivity())
-        }
-
-    }
-
-    override fun gameInfo(game: Game) {
-        REF_DATABASE_ROOT.child(NODE_PLAYERS_ONLINE)
-            .child(USER_FIREBASE.name)
-            .updateChildren(mapOf(
-                CHILD_NAME to USER_FIREBASE.name,
-                CHILD_PHOTO_URL to USER_FIREBASE.photoUrl,
-            ))
-        when(game.name){
-            R.string.stopwatch -> {navController.navigate(R.id.onlineStopwatchFragment)}
-            R.string.timer -> {navController.navigate(R.id.onlineTimerFragment)}
-        }
     }
 }

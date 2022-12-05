@@ -8,10 +8,10 @@
         android:id="@+id/navigation_rating"
         android:icon="@drawable/ic_table"
         android:title="@string/rating" />
-    <item
+    <!--<item
         android:id="@+id/navigation_players"
         android:icon="@drawable/ic_add_person"
-        android:title="@string/players" />
+        android:title="@string/players" />-->
     <item
         android:id="@+id/navigation_championship"
         android:icon="@drawable/ic_baseline_people_outline_24"
