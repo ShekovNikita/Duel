@@ -43,7 +43,7 @@ class WinnerCardFragment : BaseFragment<FragmentWinnerCardBinding>() {
         btnRepeat.setOnClickListener {
             bestPlayer = Player()
             for (i in selectedPlayers) {
-                i.id?.let { it1 -> db.getById(it1)?.let { it2 -> players.add(it2) } }
+                i.id?.let { it1 -> db.getById(it1).let { it2 -> players.add(it2) } }
             }
             selectedPlayers = players
             Log.e("selectedWin", "$selectedPlayers")

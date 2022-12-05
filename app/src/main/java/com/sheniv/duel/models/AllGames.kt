@@ -20,23 +20,20 @@ class AllGames {
         return allGames
     }
 
+    fun allGameWithRating() : ArrayList<Game>{
+        val allGames : ArrayList<Game> = arrayListOf()
+        allGames.add(stopWatch)
+        allGames.add(timer)
+        allGames.add(duel)
+
+        return allGames
+    }
+
     fun onlineGames() : ArrayList<Game>{
         val allGames : ArrayList<Game> = arrayListOf()
         allGames.add(stopWatch)
         allGames.add(timer)
 
         return allGames
-    }
-
-    fun getOnlineIcon(): ArrayList<Int>{
-        val icons = arrayListOf<Int>()
-        onlineGames().forEach { icons.add(it.icon) }
-        return icons
-    }
-
-    fun getOnlineName(): ArrayList<Int>{
-        val names = arrayListOf<Int>()
-        onlineGames().forEach { names.add(it.name) }
-        return names
     }
 }

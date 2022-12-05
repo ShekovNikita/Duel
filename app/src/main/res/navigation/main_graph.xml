@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/navigation_rating"
-        android:name="com.sheniv.duel.fragments.RatingFragment"
+        android:name="com.sheniv.duel.fragments.rating.RatingFragment"
         android:label="navigation_rating" />
     <fragment
         android:id="@+id/stopWatchGameFragment"

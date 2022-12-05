@@ -16,26 +16,6 @@ class PlayerRatingAdapter(
     val players: List<Player>
 ) : RecyclerView.Adapter<PlayerRatingAdapter.PlayerRatingViewHolder>() {
 
-    var listPlayer: ArrayList<Player> = players as ArrayList<Player>
-    var sortedList = listOf<Player>()
-
-    init {
-        if (gameName == R.string.stopwatch) {
-            sortedList = listPlayer.sortedByDescending { it.stopwatchBest }
-        }
-        if (gameName == R.string.timer) {
-            sortedList = listPlayer.sortedWith(compareBy { it.timerBest })
-        }
-        if (gameName == R.string.duel) {
-            sortedList = listPlayer.sortedByDescending { it.duelWins }
-        }
-        if (gameName == R.string.soon) {
-            listPlayer = arrayListOf(Player(name = "..."))
-            sortedList = listPlayer
-            Log.e("sorted", "$sortedList")
-        }
-    }
-
     inner class PlayerRatingViewHolder(item: View) : RecyclerView.ViewHolder(item) {
         private val binding = ItemPlayerRatingBinding.bind(item)
         val rating = binding.rating
@@ -78,9 +58,9 @@ class PlayerRatingAdapter(
         )
 
     override fun onBindViewHolder(holder: PlayerRatingViewHolder, position: Int) {
-        holder.bind(sortedList[position])
+        holder.bind(players[position])
         holder.rating.text = (position + 1).toString()
     }
 
-    override fun getItemCount() = listPlayer.size
+    override fun getItemCount() = players.size
 }

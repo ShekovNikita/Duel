@@ -41,8 +41,9 @@ class ChampionshipFragment : BaseFragment<FragmentChampionshipBinding>() {
 
         viewPager2.adapter = FragmentStateAdapter(requireActivity(), topFragment)
         TabLayoutMediator(tabLayout, viewPager2) { tab, position ->
-            tab.setIcon(AllGames().getOnlineIcon()[position])
-            tab.setText(AllGames().getOnlineName()[position])
+            val games = AllGames().onlineGames()
+            tab.setIcon(games[position].icon)
+            tab.setText(games[position].name)
         }.attach()
 
     }

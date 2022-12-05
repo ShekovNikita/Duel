@@ -13,7 +13,7 @@ import com.sheniv.duel.viewmodels.ChampionshipFragmentViewModel
 
 class OnlineStopwatchRatingFragment : BaseFragment<FragmentOnlineStopwatchRatingBinding>() {
 
-    val viewModel = ChampionshipFragmentViewModel()
+    private val viewModel = ChampionshipFragmentViewModel()
 
     override fun createViewBinding(
         inflater: LayoutInflater,
