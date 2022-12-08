@@ -159,6 +159,7 @@
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.bumptech.glide/annotations/4.14.2/57e84ef841035701766b7d74236d04c65cfa4248/annotations-4.14.2.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/721e9e4fdb4b5526468ddfc997322a1a/transformed/exifinterface-1.3.3-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/6e6090bc81691bcb7beb145674da417b/transformed/library-2.0.3-api.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/transforms-3/b80be5e9bc2758a5c89503e09429366e/transformed/core-1.10.3-api.jar</arg>
                 <arg>$MODULE_DIR$/../../../../../TeachMeSkills/Android_SDK/platforms/android-32/android.jar</arg>
                 <arg>$MODULE_DIR$/../../../../../TeachMeSkills/Android_SDK/build-tools/30.0.3/core-lambda-stubs.jar</arg>
               </args>
@@ -358,5 +359,6 @@
     <orderEntry type="library" name="Gradle: androidx.constraintlayout:constraintlayout:2.1.4@aar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.exifinterface:exifinterface:1.3.3@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.anjlab.android.iab.v3:library:2.0.3@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.android.play:core:1.10.3@aar" level="project" />
   </component>
 </module>

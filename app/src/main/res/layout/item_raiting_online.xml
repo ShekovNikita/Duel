@@ -66,34 +66,52 @@
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/materialTextView7"
                 style="@style/item_player_rating_end_text"
-                android:text="@string/games"
-                app:layout_constraintEnd_toStartOf="@+id/text_best"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/text_best"
-                style="@style/item_player_rating_end_text"
-                android:text="@string/last"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:text="@string/g"
+                app:layout_constraintEnd_toEndOf="@+id/all_games"
+                app:layout_constraintStart_toStartOf="@+id/all_games"
+                app:layout_constraintTop_toTopOf="@+id/text_last" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/all_games"
                 style="@style/item_player_rating_end_text"
                 android:padding="4dp"
-                app:layout_constraintEnd_toEndOf="@+id/materialTextView7"
-                app:layout_constraintStart_toStartOf="@+id/materialTextView7"
-                app:layout_constraintTop_toBottomOf="@+id/materialTextView7"
+                app:layout_constraintEnd_toStartOf="@+id/last"
+                app:layout_constraintTop_toTopOf="@+id/last"
+                app:layout_constraintBottom_toBottomOf="@+id/last"
                 tools:text="1213" />
 
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/text_last"
+                style="@style/item_player_rating_end_text"
+                android:text="@string/l"
+                app:layout_constraintEnd_toEndOf="@+id/last"
+                app:layout_constraintStart_toEndOf="@+id/all_games"
+                app:layout_constraintTop_toTopOf="@+id/text_best" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/last"
+                style="@style/item_player_rating_end_text"
+                android:padding="4dp"
+                app:layout_constraintEnd_toStartOf="@+id/best"
+                app:layout_constraintTop_toTopOf="@+id/best"
+                app:layout_constraintBottom_toBottomOf="@+id/best"
+                tools:text="232" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/text_best"
+                style="@style/item_player_rating_end_text"
+                android:text="@string/b"
+                app:layout_constraintEnd_toEndOf="@+id/best"
+                app:layout_constraintStart_toStartOf="@+id/best"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/best"
                 style="@style/item_player_rating_end_text"
                 android:padding="4dp"
-                app:layout_constraintEnd_toEndOf="@+id/text_best"
-                app:layout_constraintStart_toStartOf="@+id/text_best"
                 app:layout_constraintTop_toBottomOf="@+id/text_best"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
                 tools:text="232" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>

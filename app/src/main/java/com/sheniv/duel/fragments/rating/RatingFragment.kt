@@ -1,6 +1,7 @@
 package com.sheniv.duel.fragments.rating
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
@@ -10,7 +11,9 @@ import com.sheniv.duel.R
 import com.sheniv.duel.adapters.FragmentStateAdapter
 import com.sheniv.duel.base.BaseFragment
 import com.sheniv.duel.databinding.FragmentRatingBinding
+import com.sheniv.duel.extantion.viewModelRating
 import com.sheniv.duel.models.AllGames
+import com.sheniv.duel.viewmodels.RatingViewModel
 
 class RatingFragment : BaseFragment<FragmentRatingBinding>() {
 
@@ -35,5 +38,6 @@ class RatingFragment : BaseFragment<FragmentRatingBinding>() {
             tab.setIcon(games[position].icon)
             tab.setText(games[position].name)
         }.attach()
+
     }
 }

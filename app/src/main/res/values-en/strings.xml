@@ -55,4 +55,10 @@
     <string name="sign_out">Sign out?</string>
     <string name="alert_sign_out">After logging out of your account, you will not be able to take part in online competitions</string>
     <string name="last">Result</string>
+    <string name="b">B</string>
+    <string name="l">L</string>
+    <string name="g">G</string>
+    <string name="g_games">G - Games</string>
+    <string name="l_last">L - Last</string>
+    <string name="b_best">B - Best</string>
 </resources>

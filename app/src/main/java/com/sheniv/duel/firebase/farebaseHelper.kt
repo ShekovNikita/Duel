@@ -24,10 +24,10 @@ const val CHILD_NAME = "name"
 const val CHILD_PHOTO_URL = "photoUrl"
 
 //Player Online
-const val CHILD_STOPWATCH = "stopwatch"
+const val CHILD_STOPWATCH_LAST = "stopwatch_last"
 const val CHILD_STOPWATCH_GAMES = "stopwatch_games"
 const val CHILD_STOPWATCH_BEST = "stopwatch_best"
-const val CHILD_TIMER = "timer"
+const val CHILD_TIMER_LAST = "timer_last"
 const val CHILD_TIMER_GAMES = "timer_games"
 const val CHILD_TIMER_BEST = "timer_best"
 

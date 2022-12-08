@@ -13,7 +13,7 @@ import com.sheniv.duel.viewmodels.RatingViewModel
 
 class DuelRatingFragment : BaseFragment<FragmentDuelRatingBinding>() {
 
-    val viewModel = RatingViewModel()
+    private val viewModel = RatingViewModel()
 
     override fun createViewBinding(
         inflater: LayoutInflater,
@@ -22,6 +22,10 @@ class DuelRatingFragment : BaseFragment<FragmentDuelRatingBinding>() {
 
     override fun FragmentDuelRatingBinding.onBindView(savedInstanceState: Bundle?) {
         recyclerPlayersRating.adapter = PlayerRatingAdapter(R.string.duel, viewModel.getRatingDuel())
+
+        btnUpdate.setOnClickListener {
+            recyclerPlayersRating.adapter = PlayerRatingAdapter(R.string.duel, viewModel.getRatingDuel())
+        }
     }
 
 }

@@ -2,15 +2,15 @@ package com.sheniv.duel.fragments.online
 
 import android.os.Bundle
 import android.os.CountDownTimer
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import com.sheniv.duel.R
 import com.sheniv.duel.base.BaseFragment
-import com.sheniv.duel.database.room.Player
 import com.sheniv.duel.databinding.FragmentOnlineTimerBinding
-import com.sheniv.duel.extantion.*
+import com.sheniv.duel.extantion.AppValueEventListener
+import com.sheniv.duel.extantion.beGone
+import com.sheniv.duel.extantion.beVisible
+import com.sheniv.duel.extantion.bottomNavigationView
 import com.sheniv.duel.firebase.*
 import com.sheniv.duel.models.UserOnline
 
@@ -28,11 +28,11 @@ class OnlineTimerFragment : BaseFragment<FragmentOnlineTimerBinding>() {
         bottomNavigationView.beGone()
 
         var currentUser = UserOnline()
+        val fullWay = REF_DATABASE_ROOT.child(NODE_PLAYERS_ONLINE).child(USER_FIREBASE.id)
 
-        REF_DATABASE_ROOT.child(NODE_PLAYERS_ONLINE).child(USER_FIREBASE.id)
-            .addListenerForSingleValueEvent(AppValueEventListener {
-                currentUser = it.getValue(UserOnline::class.java) ?: UserOnline()
-            })
+        fullWay.addListenerForSingleValueEvent(AppValueEventListener {
+            currentUser = it.getValue(UserOnline::class.java) ?: UserOnline()
+        })
 
         timer = object : CountDownTimer(5000, 1) {
             override fun onTick(seconds: Long) {
@@ -44,12 +44,20 @@ class OnlineTimerFragment : BaseFragment<FragmentOnlineTimerBinding>() {
                     counter = seconds.toInt()
                     timerText.text = String.format("%1d:%03d", counter / 1000, counter % 1000)
 
-                    REF_DATABASE_ROOT.child(NODE_PLAYERS_ONLINE)
-                        .child(USER_FIREBASE.id)
-                        .updateChildren(mapOf(
-                            CHILD_TIMER to counter,
-                            CHILD_TIMER_GAMES to currentUser.timer_games + 1
-                        ))
+                    if (currentUser.timer_best > counter)
+                        fullWay.updateChildren(
+                            mapOf(
+                                CHILD_TIMER_LAST to counter,
+                                CHILD_TIMER_GAMES to currentUser.timer_games + 1,
+                                CHILD_TIMER_BEST to counter
+                            )
+                        )
+                    else fullWay.updateChildren(
+                        mapOf(
+                            CHILD_TIMER_LAST to counter,
+                            CHILD_TIMER_GAMES to currentUser.timer_games + 1,
+                        )
+                    )
 
                     returnToChampionship()
                 }
@@ -59,12 +67,12 @@ class OnlineTimerFragment : BaseFragment<FragmentOnlineTimerBinding>() {
                 timerText.text = getString(R.string.time_is_over)
                 playerName.isClickable = false
 
-                REF_DATABASE_ROOT.child(NODE_PLAYERS_ONLINE)
-                    .child(USER_FIREBASE.id)
-                    .updateChildren(mapOf(
-                        CHILD_TIMER to 5000,
-                        CHILD_TIMER_GAMES to currentUser.timer_games + 1
-                    ))
+                fullWay.updateChildren(
+                        mapOf(
+                            CHILD_TIMER_LAST to 5000,
+                            CHILD_TIMER_GAMES to currentUser.timer_games + 1
+                        )
+                    )
 
                 returnToChampionship()
             }

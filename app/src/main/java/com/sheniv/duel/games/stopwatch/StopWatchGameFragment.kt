@@ -10,6 +10,7 @@ import com.sheniv.duel.base.BaseFragmentGame
 import com.sheniv.duel.database.room.Player
 import com.sheniv.duel.databinding.FragmentStopWatchGameBinding
 import com.sheniv.duel.extantion.*
+import com.sheniv.duel.viewmodels.RatingViewModel
 
 class StopWatchGameFragment : BaseFragmentGame<FragmentStopWatchGameBinding>() {
 

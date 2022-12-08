@@ -11,17 +11,10 @@
         android:label="navigation_games"
         tools:layout="@layout/fragment_main" />
     <fragment
-        android:id="@+id/navigation_players"
-        android:name="com.sheniv.duel.fragments.PlayersFragment"
-        android:label="navigation_add_player" >
-        <action
-            android:id="@+id/action_navigation_players_to_playerInfoFragment"
-            app:destination="@id/playerInfoFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/navigation_rating"
         android:name="com.sheniv.duel.fragments.rating.RatingFragment"
-        android:label="navigation_rating" />
+        android:label="navigation_rating"
+        tools:layout="@layout/fragment_rating"/>
     <fragment
         android:id="@+id/stopWatchGameFragment"
         android:name="com.sheniv.duel.games.stopwatch.StopWatchGameFragment"
@@ -47,11 +40,6 @@
         android:name="com.sheniv.duel.fragments.HelpFragment"
         android:label="fragment_help"
         tools:layout="@layout/fragment_help" />
-    <fragment
-        android:id="@+id/playerInfoFragment"
-        android:name="com.sheniv.duel.fragments.PlayerInfoFragment"
-        android:label="fragment_player_info"
-        tools:layout="@layout/fragment_player_info" />
     <fragment
         android:id="@+id/winnerCardFragment"
         android:name="com.sheniv.duel.games.WinnerCardFragment"

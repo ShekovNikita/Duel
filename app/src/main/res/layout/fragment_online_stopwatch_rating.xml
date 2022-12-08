@@ -6,13 +6,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.online.OnlineStopwatchRatingFragment">
 
+    <include
+        android:id="@+id/include"
+        layout="@layout/one_letter_fields" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_players_rating"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toTopOf="@+id/btn_play"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include"
         tools:listitem="@layout/item_raiting_online" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

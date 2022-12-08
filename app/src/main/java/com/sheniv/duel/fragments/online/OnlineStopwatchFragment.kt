@@ -7,10 +7,12 @@ import android.view.ViewGroup
 import com.sheniv.duel.R
 import com.sheniv.duel.base.BaseFragment
 import com.sheniv.duel.databinding.FragmentOnlineStopwatchBinding
-import com.sheniv.duel.extantion.*
+import com.sheniv.duel.extantion.AppValueEventListener
+import com.sheniv.duel.extantion.beGone
+import com.sheniv.duel.extantion.beVisible
+import com.sheniv.duel.extantion.bottomNavigationView
 import com.sheniv.duel.firebase.*
 import com.sheniv.duel.models.UserOnline
-import kotlinx.coroutines.NonCancellable.start
 
 class OnlineStopwatchFragment : BaseFragment<FragmentOnlineStopwatchBinding>() {
 
@@ -26,9 +28,9 @@ class OnlineStopwatchFragment : BaseFragment<FragmentOnlineStopwatchBinding>() {
         bottomNavigationView.beGone()
 
         var currentUser = UserOnline()
+        val fullWay = REF_DATABASE_ROOT.child(NODE_PLAYERS_ONLINE).child(USER_FIREBASE.id)
 
-        REF_DATABASE_ROOT.child(NODE_PLAYERS_ONLINE).child(USER_FIREBASE.id)
-            .addListenerForSingleValueEvent(AppValueEventListener {
+        fullWay.addListenerForSingleValueEvent(AppValueEventListener {
                 currentUser = it.getValue(UserOnline::class.java) ?: UserOnline()
             })
 
@@ -41,12 +43,20 @@ class OnlineStopwatchFragment : BaseFragment<FragmentOnlineStopwatchBinding>() {
                 playerCounter.isClickable = false
                 timerText.setText(R.string.time_is_over)
 
-                REF_DATABASE_ROOT.child(NODE_PLAYERS_ONLINE)
-                    .child(USER_FIREBASE.id)
-                    .updateChildren(mapOf(
-                        CHILD_STOPWATCH to counter,
+                if (currentUser.stopwatch_best < counter)
+                    fullWay.updateChildren(
+                        mapOf(
+                            CHILD_STOPWATCH_LAST to counter,
+                            CHILD_STOPWATCH_GAMES to currentUser.stopwatch_games + 1,
+                            CHILD_STOPWATCH_BEST to counter
+                        )
+                    )
+                else fullWay.updateChildren(
+                    mapOf(
+                        CHILD_STOPWATCH_LAST to counter,
                         CHILD_STOPWATCH_GAMES to currentUser.stopwatch_games + 1
-                    ))
+                    )
+                )
 
                 btnStart.beVisible()
                 btnStart.setText(R.string.continued)
@@ -57,25 +67,25 @@ class OnlineStopwatchFragment : BaseFragment<FragmentOnlineStopwatchBinding>() {
     override fun onResume() {
         super.onResume()
 
-            counter = 0
-            with(binding) {
-                playerCounter.textSize = 100f
-                timerText.beVisible()
-                timerText.text = "5:000"
-                btnStart.beVisible()
-                playerCounter.text = counter.toString()
-            }
-            binding.btnStart.setOnClickListener {
-                binding.playerCounter.isClickable = true
-                timer?.start()
-                binding.btnStart.beGone()
-                binding.playerCounter.setOnClickListener {
-                    counter++
-                    binding.playerCounter.text = counter.toString()
+        counter = 0
+        with(binding) {
+            playerCounter.textSize = 100f
+            timerText.beVisible()
+            timerText.text = "5:000"
+            btnStart.beVisible()
+            playerCounter.text = counter.toString()
+        }
+        binding.btnStart.setOnClickListener {
+            binding.playerCounter.isClickable = true
+            timer?.start()
+            binding.btnStart.beGone()
+            binding.playerCounter.setOnClickListener {
+                counter++
+                binding.playerCounter.text = counter.toString()
 
-                    binding.btnStart.setOnClickListener { navController.popBackStack() }
-                }
+                binding.btnStart.setOnClickListener { navController.popBackStack() }
             }
+        }
     }
 
     override fun onDestroyView() {

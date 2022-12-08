@@ -26,10 +26,10 @@ class OnlineRatingAdapter(
 
     init {
         if (gameName == R.string.stopwatch) {
-            sortedList = listPlayer.sortedByDescending { it.stopwatch}
+            sortedList = listPlayer.sortedByDescending { it.stopwatch_best}
         }
         if (gameName == R.string.timer) {
-            sortedList = listPlayer.sortedWith(compareBy { it.timer })
+            sortedList = listPlayer.sortedWith(compareBy { it.timer_best })
         }
     }
 
@@ -45,11 +45,13 @@ class OnlineRatingAdapter(
             when (gameName) {
                 R.string.stopwatch -> {
                     allGames.text = player.stopwatch_games.toString()
-                    best.text = player.stopwatch.toString()
+                    best.text = player.stopwatch_best.toString()
+                    last.text = player.stopwatch_last.toString()
                 }
                 R.string.timer -> {
                     allGames.text = player.timer_games.toString()
-                    best.text = player.timer.toString()
+                    best.text = player.timer_best.toString()
+                    last.text = player.timer_last.toString()
                 }
             }
         }

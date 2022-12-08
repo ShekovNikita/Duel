@@ -55,6 +55,10 @@
     <string name="alert_sign_out">Выйдя из аккаунта вы не сможете принимать участие в онлайн соревнованиях</string>
     <string name="battle">Баттл</string>
     <string name="last">Последнее</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="b">Л</string>
+    <string name="l">П</string>
+    <string name="g">И</string>
+    <string name="g_games">И - Игры</string>
+    <string name="l_last">П - Последнее</string>
+    <string name="b_best">Л - Лучшее</string>
 </resources>

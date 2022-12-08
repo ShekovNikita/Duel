@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.ui.navigateUp
 import com.sheniv.duel.R
 import com.sheniv.duel.base.BaseFragment
 import com.sheniv.duel.database.room.Player
 import com.sheniv.duel.databinding.FragmentWinnerCardBinding
 import com.sheniv.duel.extantion.*
+import com.sheniv.duel.viewmodels.MainActivityViewModel
 
 class WinnerCardFragment : BaseFragment<FragmentWinnerCardBinding>() {
     override fun createViewBinding(
@@ -38,6 +40,7 @@ class WinnerCardFragment : BaseFragment<FragmentWinnerCardBinding>() {
         }
         btnGames.setOnClickListener {
             selectedPlayers.clear()
+            navController.popBackStack()
             navController.navigate(R.id.navigation_games)
         }
         btnRepeat.setOnClickListener {
