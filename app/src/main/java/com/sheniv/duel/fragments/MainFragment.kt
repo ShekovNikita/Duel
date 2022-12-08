@@ -4,18 +4,13 @@ import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.os.Message
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.accessibility.AccessibilityEventCompat.setAction
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.play.core.appupdate.AppUpdateManager
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory
-import com.google.android.play.core.install.InstallState
 import com.google.android.play.core.install.InstallStateUpdatedListener
 import com.google.android.play.core.install.model.AppUpdateType
 import com.google.android.play.core.install.model.InstallStatus
@@ -45,6 +40,10 @@ class MainFragment : BaseFragment<FragmentMainBinding>(), ClickOnTheGame {
         bottomNavigationView.beVisible()
         recyclerGames.layoutManager = GridLayoutManager(context, 2)
         recyclerGames.adapter = GameAdapter(this@MainFragment, allGames)
+
+        btnInfo.setOnClickListener {
+            showRulesDialog(getString(R.string.thanks), getString(R.string.names_to_thanks))
+        }
     }
 
     private fun checkUpdate() {
@@ -111,7 +110,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>(), ClickOnTheGame {
 
     }
 
-    fun showRulesDialog(title: String, message: String){
+    private fun showRulesDialog(title: String, message: String){
         MaterialAlertDialogBuilder(requireActivity())
             .setTitle(title)
             .setMessage(message)
@@ -134,33 +133,5 @@ class MainFragment : BaseFragment<FragmentMainBinding>(), ClickOnTheGame {
             }
             .setNegativeButton(getString(R.string.cancel), null)
             .show()
-    }
-
-    override fun onResume() {
-        //binding.recyclerPlayersRating.adapter = PlayerRatingAdapter(R.string.stopwatch, db.getAll().sortedByDescending { it.stopwatchBest })
-        Log.e("onResume", "onResumeStopWatchRatingFragment")
-        super.onResume()
-    }
-
-    override fun onDestroyView() {
-        Log.e("MainFragment", "onDestroyView")
-        super.onDestroyView()
-    }
-
-    override fun onDestroy() {
-        Log.e("MainFragment", "onDestroy")
-        super.onDestroy()
-    }
-
-    override fun onStart() {
-        Log.e("MainFragment", "onStart")
-        super.onStart()
-    }
-
-
-    override fun onPause() {
-        Log.e("MainFragment", "onPause")
-        super.onPause()
-
     }
 }

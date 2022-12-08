@@ -61,4 +61,6 @@
     <string name="g_games">И - Игры</string>
     <string name="l_last">П - Последнее</string>
     <string name="b_best">Л - Лучшее</string>
+    <string name="thanks">Благодарность</string>
+    <string name="names_to_thanks" translatable="false">version 1.0.5\nViktoria Ikonnikova\nFedosenko Maksim\nDenis Baluev</string>
 </resources>
